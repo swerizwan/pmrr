@@ -1,0 +1,71 @@
+SOLVER:
+  MAX_ITER: 500000  # Maximum number of iterations for training
+  TYPE: Adam  # Optimizer type
+  BASE_LR: 0.00005  # Base learning rate
+  GAMMA: 0.1  # Learning rate decay factor
+  STEPS: [0]  # Steps at which to decay learning rate
+  EPOCHS: [0]  # Epochs at which to decay learning rate
+DEBUG: False  # Debug mode flag
+LOGDIR: ''  # Directory for logging
+DEVICE: cuda  # Device for training (e.g., cuda for GPU)
+NUM_WORKERS: 8  # Number of workers for data loading
+SEED_VALUE: -1  # Random seed value (-1 for random seed)
+LOSS:
+  KP_2D_W: 300.0  # Weight for 2D keypoint loss
+  KP_3D_W: 300.0  # Weight for 3D keypoint loss
+  SHAPE_W: 0.06  # Weight for shape loss
+  POSE_W: 60.0  # Weight for pose loss
+  VERT_W: 0.0  # Weight for vertex loss
+  INDEX_WEIGHTS: 2.0  # Weight for index weights
+  PART_WEIGHTS: 0.3  # Weight for part loss (surface parts)
+  POINT_REGRESSION_WEIGHTS: 0.5  # Weight for UV regression loss
+TRAIN:
+  NUM_WORKERS: 16  # Number of workers for training data loading
+  BATCH_SIZE: 64  # Batch size for training
+  PIN_MEMORY: True  # Pin memory for faster data transfer
+TEST:
+  BATCH_SIZE: 32  # Batch size for testing
+MODEL:
+  EBL:
+    MAF_ON: False  # Flag for using MAF (not used in this configuration)
+    BACKBONE: 'res50'  # Backbone architecture
+    MLP_DIM: [256, 128, 64, 5]  # Dimensions for MLP layers
+    N_ITER: 3  # Number of iterations for EBL
+    AUX_SUPV_ON: True  # Auxiliary supervision flag
+    DP_HEATMAP_SIZE: 56  # Size of heatmaps for DensePose
+RES_MODEL:
+  DECONV_WITH_BIAS: False  # Flag for deconvolution with bias
+  NUM_DECONV_LAYERS: 3  # Number of deconvolution layers
+  NUM_DECONV_FILTERS:
+  - 256  # Number of filters for each deconvolution layer
+  - 256
+  - 256
+  NUM_DECONV_KERNELS:
+  - 4  # Kernel size for each deconvolution layer
+  - 4
+  - 4
+
+POSE_RES_MODEL:
+  INIT_WEIGHTS: True  # Flag for initializing weights
+  NAME: 'pose_resnet'  # Name of the pose ResNet model
+  PRETR_SET: 'imagenet'   # Pre-training dataset ('none', 'imagenet', 'coco')
+  PRETRAINED_IM: 'data/pretrained_model/resnet50-19c8e357.pth'  # Path to ImageNet pre-trained model
+  PRETRAINED_COCO: 'data/pretrained_model/pose_resnet_50_256x192.pth.tar'  # Path to COCO pre-trained model
+  EXTRA:
+    TARGET_TYPE: 'gaussian'  # Type of target (e.g., gaussian for heatmaps)
+    HEATMAP_SIZE:
+    - 48  # Height of heatmaps
+    - 64  # Width of heatmaps
+    SIGMA: 2  # Sigma value for gaussian heatmap generation
+    FINAL_CONV_KERNEL: 1  # Kernel size for final convolution
+    DECONV_WITH_BIAS: False  # Flag for deconvolution with bias
+    NUM_DECONV_LAYERS: 3  # Number of deconvolution layers
+    NUM_DECONV_FILTERS:
+    - 256  # Number of filters for each deconvolution layer
+    - 256
+    - 256
+    NUM_DECONV_KERNELS:
+    - 4  # Kernel size for each deconvolution layer
+    - 4
+    - 4
+    NUM_LAYERS: 50  # Number of layers in the model
