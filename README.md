@@ -1,10 +1,10 @@
-# Body Language Estimation in Interviews Using Human Mesh Reconstruction
+# Pyramid-Based Mesh Refinement for 3D Human Reconstruction in Body Language Assessment
 
 <img style="max-width: 100%;" src="https://github.com/swerizwan/PMRR/blob/main/resources/wax.png" alt="Title Overview">
 
 # Overview
 
-This paper introduces a Pyramid-based Mesh Refinement Reconstruction (PMRR) method for accurately reconstructing 3D human meshes from single images, crucial for analyzing body language, hands posture, and facial expression in interviews. PMRR employs a feature pyramid to enhance neural network predictions, improving mesh-image alignment. It incorporates high-resolution features and pixel-wise supervision to reduce estimation errors. Validated on COCO and 3DPW datasets, PMRR demonstrates superior performance in mesh reconstruction, making it ideal for non-verbal communication studies.
+This work introduces a Pyramid-based Mesh Refinement Reconstruction (PMRR) framework for accurate 3D human mesh reconstruction from a single image. The proposed method iteratively refines mesh parameters using multi-scale features to improve mesh-image alignment. It further incorporates emotional stability loss to maintain facial expression consistency and applies pixel-wise supervision to enhance feature quality. These improvements enable reliable analysis of body gestures, hand postures, and facial expressions for body language assessment.
 
 # 👁️💬 Architecture
 
@@ -94,6 +94,14 @@ COCO (Common Objects in Context) is a large-scale dataset designed for object de
 ### 3DPW
 
 3DPW (3D Poses in the Wild) is a dataset containing outdoor video sequences with accurate 3D human poses captured using IMUs and cameras. It is widely used to evaluate 3D body posture and gesture recognition in natural environments. You can download the dataset from the [official 3DPW website](https://virtualhumans.mpi-inf.mpg.de/3DPW/).
+
+### IEMOCAP
+
+IEMOCAP (Interactive Emotional Dyadic Motion Capture) is a multimodal dataset containing acted conversational recordings with annotated emotional expressions. You can download the dataset from the [official 3DPW website](https://sail.usc.edu/iemocap/).
+
+### AffectNet
+
+AffectNet is a large-scale facial expression dataset collected from the internet, containing images annotated with discrete emotion categories and valence-arousal labels.You can download the dataset from the [official 3DPW website](https://mohammadmahoor.com/pages/databases/affectnet/).
 
 
 ## Preview of Demo Results:
