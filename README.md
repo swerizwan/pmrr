@@ -60,8 +60,7 @@ bash fetch_data.sh
 > Final Fits Data from SPIN
 - Retrieve the final fits data as outlined [here](https://github.com/nkolot/SPIN#final-fits). Important Note: Using [EFT](https://github.com/facebookresearch/eft) fits for training is recommended. Compatible `.npz` files can be found [here](https://cloud.tsinghua.edu.cn/d/635c717375664cd6b3f5)
 
-> Pre-trained Model
-- Download the [pre-trained model](https://drive.google.com/file/d/1XMjZBsz-losAilG9ZEZQlZMPmrssDLBg/view?usp=sharing) and place it in the `./files/pretrained_model` directory.
+> Files Directory
 - After gathering these necessary files, your `./data` directory structure should look like this:
 ```
 ./files
@@ -103,7 +102,6 @@ IEMOCAP (Interactive Emotional Dyadic Motion Capture) is a multimodal dataset co
 
 AffectNet is a large-scale facial expression dataset collected from the internet, containing images annotated with discrete emotion categories and valence-arousal labels.You can download the dataset from the [official 3DPW website](https://mohammadmahoor.com/pages/databases/affectnet/).
 
-
 ## Preview of Demo Results:
 
 ### For Image Input:
@@ -125,25 +123,6 @@ python3 run_demo.py --checkpoint=files/pretrained_model/emo_body_lang_checkpoint
 <p align="center">
     <img style="max-width: 100%;" src="https://github.com/swerizwan/PMRR/blob/main/resources/image.gif" alt="PMRR Overview">
 </p>
-
-
-## Evaluation
-
-### COCO
-
-1. Download the preprocessed data [coco_2014_val.npz](https://drive.google.com/file/d/1ew77AaaOT3SAF0fZpfPrg02P5c9bzTHe/view?usp=sharing). Put it into the `./files/dataset_extras` directory. 
-
-2. Run the COCO evaluation code.
-```
-python3 coco.py --checkpoint=files/pretrained_model/emo_body_lang_checkpoint.pt
-```
-
-### 3DPW
-
-Run the evaluation code. Using `--dataset` to specify the evaluation dataset.
-```
-python3 main.py --checkpoint=files/pretrained_model/emo_body_lang_checkpoint.pt --dataset=3dpw --log_freq=20
-```
 
 ## Training
 
